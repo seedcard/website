@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SEEDCARD</title>
+    <title>Your Website Title</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
             text-align: center;
         }
         header {
@@ -21,20 +22,10 @@
         header h1 {
             margin: 0;
         }
-        nav {
-            margin: 20px 0;
-        }
-        nav button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        nav button:hover {
-            background-color: #555;
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
         }
         section {
             padding: 20px;
@@ -43,13 +34,32 @@
             margin: 20px auto;
             width: 80%;
             max-width: 800px;
-            background-color: white;
+            background-color: #222;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
-        img {
-            max-width: 100%;
-            height: auto;
+        nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #fff; /* White button background */
+            padding: 10px 0;
+        }
+        nav button {
+            background-color: #fff;
+            color: black; /* Black text on buttons */
+            border: 2px solid #000; /* Black border */
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        nav button:hover {
+            background-color: #ddd;
+        }
+        footer {
+            margin-top: 20px;
+            color: #888;
         }
     </style>
 </head>
@@ -59,17 +69,10 @@
     <h1>SEEDCARD</h1>
 </header>
 
-<nav>
-    <button onclick="location.href='index.html'">Introduction</button>
-    <button onclick="location.href='technology.html'">Technology</button>
-    <button onclick="location.href='software.html'">Software</button>
-    <button onclick="location.href='code-brief.html'">Code Brief</button>
-    <button onclick="location.href='annex.html'">Annex</button>
-</nav>
-
 <section>
+    <img src="placeholder-image.jpg" alt="Placeholder Image">
     <div class="content">
-        <h2>Page Title</h2>
+        <h2>Introduction</h2>
         <p>SEEDCARD  introduction
 
 SEEDCARD is a physical Bitcoin key card designed to make gifting or transacting Bitcoin as easy as handing over cash, without requiring any technical knowledge.
@@ -118,9 +121,16 @@ Offline and Secure: All key generation is done offline, ensuring that there is n
 No Technical Skills Needed: The whole process is simplified. With SEEDCARD, you don’t need to understand Bitcoin’s technical details to use it effectively. Just tap to verify the Bitcoin balance and make your first off-chain transaction….as straightforward as using physical cash.
 
 </p>
-        <img src="placeholder-image.jpg" alt="Placeholder Image">
     </div>
 </section>
+
+<nav>
+    <button onclick="location.href='index.html'">Introduction</button>
+    <button onclick="location.href='technology.html'">Technology</button>
+    <button onclick="location.href='software.html'">Software</button>
+    <button onclick="location.href='code-brief.html'">Code Brief</button>
+    <button onclick="location.href='annex.html'">Annex</button>
+</nav>
 
 <footer>
     <p>&copy; 2024 SEEDCARD All rights reserved.</p>
