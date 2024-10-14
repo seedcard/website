@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Technology</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            text-align: left;
+            padding: 20px;
+            line-height: 1.6;
+            font-size: 18px; /* Uniform text size */
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffcc00; /* Gold accent for titles */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 28px;
+            margin-top: 40px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 60px; /* Extra padding at the bottom */
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px; /* Space below the image */
+        }
+        .image-container img {
+            max-width: 100%; /* Make sure the image fits within the page */
+            height: auto;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* Buttons Styling at the Bottom */
+        nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000; /* Black background matching the page */
+            padding: 20px 0; /* Added extra padding */
+            text-align: center;
+        }
+        nav button {
+            background-color: #000;
+            color: black;
+            border: 2px solid #ffcc00; /* Gold border */
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+        }
+        nav button:hover {
+            background-color: #333; /* Darker background on hover */
+        }
+        /* Dark green for bold text */
+        .bold-green {
+            color: #006400; /* Dark green */
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <!-- Image at the top center -->
+    <div class="image-container">
+        <img src="your-image-url-here.jpg" alt="Technology Image"> <!-- Replace with your image URL -->
+    </div>
+
+    <h1>Technology</h1>
+    
+    <p>The SEEDCARD is designed to be a decentralized product.</p>
+
+    <p>It requires two persons who can be in different geographical locations:</p>
+
+    <p><span class="bold-green">Card Issuer</span> has the Initiator role and will generate the first partial private key that is engraved on the unspendable POW plate. The Card Issuer also generates a partial public key that is shared with the Card Agent.</p>
+
+    <p><span class="bold-green">Card Agent</span> has the Reciprocator role to generate the second partial private key that is engraved on the CIRC plate. The Card Agent also generates a second partial public key, which is combined with the first partial public key to create a full public key that can receive funds. The Card Agent also engraves the full public key on the rear of the CIRC plate.</p>
+
+    <p>By using two devices in separate locations, the SEEDCARD system ensures no single point of risk in the wallet generation process, reducing the chance of compromise.</p>
+
+    <p>The SEEDCARD technology leverages elliptic curve cryptography (ECC) and partial key principles to create a secure, decentralized method for generating a Bitcoin wallet and engraving physical cards used for storing keys and transferring funds.</p>
+
+    <h2>Physical Product</h2>
+    <p>The physical product consists of two stainless steel credit card size plates, each serving a different purpose:</p>
+    
+    <ul>
+        <li><span class="bold-green">POW Plate (Proof of Work):</span> This plate is retained by the Card Issuer and serves as a record of issuance. A partial private key is engraved on the plate. It is unspendable, meaning it cannot receive or send Bitcoin and does not have an NFC tag.</li>
+        <li><span class="bold-green">CIRC Plate (Circulation):</span> This plate is designed to circulate like cash and hold Bitcoin. A partial private key is engraved on the plate. It has a full public address engraved on the rear, allowing the holder to check balance and receive funds. The plate has an embedded NFC tag, providing security and enabling card verification.</li>
+    </ul>
+
+    <h2>SEEDCARD Production Process</h2>
+    <p>To create a SEEDCARD both the Card Issuer and Card Agent require the following:</p>
+
+    <ul>
+        <li>SeedSigner with SEEDCARD Generator ECC software downloaded onto micro SD card</li>
+        <li>Seed Hammer engraving machine and controller with SEEDCARD Engraver software downloaded onto micro SD card</li>
+        <li>1 x CIRC stainless steel plate</li>
+        <li>1 x POW stainless steel plate</li>
+    </ul>
+
+    <h2>Step 1 - Creation of Partial Keys:</h2>
+    <p>The Card Issuer uses the Generator ECC software to generate the first partial private key and corresponding partial public key. This public key is shared with the Card Agent.</p>
+    <p>The Card Agent uses the Generator ECC software to generate the second partial private key. The corresponding partial public key is used in Step 2. Both keys are output as qr codes on the SeedSigner device.</p>
+
+    <h2>Step 2 - Combining Public Keys:</h2>
+    <p>The Card Agent combines the two partial public keys using elliptic curve point addition to create a full public key, output as a qr code.</p>
+
+    <h2>Step 3 - Use of the Card Name:</h2>
+    <p>The Card Agent scans the Card Name qr code (printed on a label attached to the blank CIRC plate) with the Engraver software installed on a Seed Hammer engraving machine controller.</p>
+    <p>The data consists of the Card Issuer two letter code and 14 character UID from the NFC tag and is engraved on both the CIRC and POW plates.</p>
+    <p>The Card Name QR is required for the engraving process and is shared with the Card Issuer to enable the POW plate to be engraved.</p>
+
+    <h2>Step 4 - Engraving:</h2>
+    <p>The first partial private key SeedQR is engraved on the POW plate and kept by the Card Issuer. The second partial private key SeedQR is engraved on the front of the CIRC plate. The Bitcoin full public key qr code is engraved on the rear of the CIRC plate.</p>
+
+    <h2>Step 5 - Issuance and Use:</h2>
+    <p>The CIRC plate is transferred to the Card Holder who can scan Bitcoin public address qr code engraved on the rear to top-up the wallet balance. The SEEDCARD is then ready to use. Normal use will consist of physical transfer from one Card Holder to another, the same as how cash is used. The SEEDCARD balance can be verified by scanning the public key qr code.</p>
+    <p>If the Card Holder wants to sweep the funds from the SEEDCARD, the card must be physically returned to the Card Agent. The Card Agent will expose the partial private key and share with the Card Issuer who will combine the partial private key from the POW plate with the one on the CIRC plate to derive the full private key, enabling the funds to be transferred out of the wallet.</p>
+</div>
+
+<nav>
+    <button onclick="location.href='index.html'">Introduction</button>
+    <button onclick="location.href='technology.html'">Technology</button>
+    <button onclick="location.href='software.html'">Software</button>
+    <button onclick="location.href='code-brief.html'">Code Brief</button>
+    <button onclick="location.href='annex.html'">Annex</button>
+</nav>
+
+</body>
+</html>
