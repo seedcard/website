@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Software</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            text-align: left;
+            padding: 20px;
+            line-height: 1.6;
+            font-size: 18px; /* Uniform text size */
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffcc00; /* Gold accent for titles */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 28px;
+            margin-top: 40px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 60px; /* Extra padding at the bottom */
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px; /* Space below the image */
+        }
+        .image-container img {
+            max-width: 100%; /* Make sure the image fits within the page */
+            height: auto;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* Buttons Styling at the Bottom */
+        nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000; /* Black background matching the page */
+            padding: 20px 0; /* Added extra padding */
+            text-align: center;
+        }
+        nav button {
+            background-color: #000;
+            color: black;
+            border: 2px solid #ffcc00; /* Gold border */
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+        }
+        nav button:hover {
+            background-color: #333; /* Darker background on hover */
+        }
+        /* Dark green for bold text */
+        .bold-green {
+            color: #006400; /* Dark green */
+        }
+        /* Red for equations */
+        .red {
+            color: red; /* Red color for equations */
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <!-- Image at the top center -->
+    <div class="image-container">
+        <img src="https://i.ibb.co/W3znNqd/SEEDCARD-OG-BIP39.png" alt="SEEDCARD Logo" border="0"> <!-- Replace with your image URL -->
+    </div>
+
+    <h1>Software</h1>
+
+    <p>The SEEDCARD Generator ECC software is designed to run on the SeedSigner hardware device. The main screen offers three options. The user will select options according to their role as Card Issuer or Card Agent.</p>
+    
+    <p><span class="bold-green">Option 1</span> is selected if the user is acting as Card Issuer.</p>
+    <p><span class="bold-green">Option 2</span> if the user is acting as a Card Agent.</p>
+    
+    <h2>Software UI</h2>
+    
+    <p>On the main screen of the SeedSigner there are three options:</p>
+    
+    <p><span class="bold-green">Option 1:</span> The SeedSigner device generates a partial private key, converts it to a 12-word seed phrase displayed as a SeedQR code, derives the corresponding partial public key and output as a QR code.</p>
+    
+    <p><span class="bold-green">Option 2:</span> The SeedSigner device generates a partial private key, converts it to a 12-word seed phrase displayed as a SeedQR code, scans another device’s partial public key QR code, combines it with its locally generated public key, and outputs the combined Bitcoin address as a QR code.</p>
+    
+    <p><span class="bold-green">Option 3:</span> The SeedSigner device scans two SeedQR codes of partial private keys to generate a full private key, which is output as a SeedQR code.</p>
+    
+    <h2>Software Workflow</h2>
+    
+    <h3>Part 1: Generating and Combining Public Keys</h3>
+    
+    <p><span class="bold-green">Generate Two Partial Private Keys:</span> Each participant generates their own private key, which we call a partial private key. These are large random numbers used in elliptic curve cryptography.</p>
+    <p>For example, say Alice and Bob are generating keys. Alice has her private key (k<sub>A</sub>), and Bob has his private key (k<sub>B</sub>). These keys are kept secret by each party.</p>
+    
+    <p><span class="bold-green">Generate Corresponding Public Keys:</span> From each private key, you can calculate a corresponding public key using elliptic curve multiplication. This is a one-way process where the public key is derived from the private key, but the private key cannot be easily determined from the public key.</p>
+    <p>So Alice generates her public key (P<sub>A</sub> = k<sub>A</sub> * G), and Bob generates his public key (P<sub>B</sub> = k<sub>B</sub> * G), where G is a standard point on the elliptic curve (called the generator point).</p>
+    
+    <p><span class="bold-green">Combine Public Keys:</span> The two public keys are combined using elliptic curve point addition. This is an operation on the curve that results in a new point, which represents a combined public key.</p>
+    <p>The combined public key is: P<sub>combined</sub> = P<sub>A</sub> + P<sub>B</sub>. This combined public key (P<sub>combined</sub>) can now be used in a Bitcoin Pay-to-Public-Key (P2PK) transaction.</p>
+    <p>At this point, you have a combined public key that can receive funds. However, this wallet cannot spend the funds. To spend the funds, Alice and Bob must combine their private keys (Part 2).</p>
+
+    <h3>Part 2: Combining the Private Keys</h3>
+    
+    <p><span class="bold-green">Combine Private Keys (Full Private Key):</span> It is possible to combine the private keys mathematically:</p>
+    <p>To get the full private key that corresponds to the combined public key, Alice and Bob can simply add their partial private keys together: k<sub>combined</sub> = (k<sub>A</sub> + k<sub>B</sub>) mod n.</p>
+    <p>Here, n is the order of the elliptic curve, which is a fixed number. The resulting k<sub>combined</sub> is the full private key.</p>
+
+    <p><span class="bold-green">Use the Full Private Key for Signing:</span> The combined private key k<sub>combined</sub> can be used to sign a transaction that spends funds from the wallet controlled by P<sub>combined</sub>.</p>
+    
+    <h3>Key Points:</h3>
+    <ul>
+        <li>Partial Private Keys are kept by individual parties and correspond to their public keys.</li>
+        <li>Public Key Combination (using elliptic curve point addition) allows the creation of a shared public key without sharing private keys.</li>
+        <li>Private Key Combination allows the funds to be transferred off the SEEDCARD to another wallet.</li>
+    </ul>
+</div>
+
+<nav>
+    <button onclick="location.href='index.html'">Introduction</button>
+    <button onclick="location.href='technology.html'">Technology</button>
+    <button onclick="location.href='software.html'">Software</button>
+    <button onclick="location.href='code-brief.html'">Code Brief</button>
+    <button onclick="location.href='annex.html'">Annex</button>
+</nav>
+
+</body>
+</html>
