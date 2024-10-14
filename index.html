@@ -13,6 +13,7 @@
             text-align: left;
             padding: 20px;
             line-height: 1.6;
+            font-size: 18px; /* Uniform text size */
         }
         h1, h2 {
             text-align: center;
@@ -28,12 +29,19 @@
         }
         p {
             margin-bottom: 20px;
-            font-size: 18px;
         }
         .content {
             max-width: 800px;
             margin: 0 auto;
             padding-bottom: 60px; /* Extra padding at the bottom */
+        }
+        .image-container {
+            text-align: center;
+            margin-bottom: 20px; /* Space below the image */
+        }
+        .image-container img {
+            max-width: 100%; /* Make sure the image fits within the page */
+            height: auto;
         }
         ul {
             list-style-type: disc;
@@ -69,6 +77,11 @@
 <body>
 
 <div class="content">
+    <!-- Image at the top center -->
+    <div class="image-container">
+        <img src="your-image-url-here.jpg" alt="SEEDCARD Image">
+    </div>
+
     <h1>SEEDCARD</h1>
     <p>
         SEEDCARD is a physical Bitcoin key card designed to make gifting or transacting Bitcoin as easy as handing over cash, without requiring any technical knowledge.
