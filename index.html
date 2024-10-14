@@ -4,51 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Your Website Title</title>
+    <title>SEEDCARD</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Helvetica', 'Arial', sans-serif;
             background-color: #000; /* Black background */
             color: #fff; /* White text */
-            text-align: center;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-        }
-        header h1 {
-            margin: 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
-        section {
+            text-align: left;
             padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffcc00; /* Gold accent for titles */
+        }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 28px;
+            margin-top: 40px;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
         }
         .content {
-            margin: 20px auto;
-            width: 80%;
             max-width: 800px;
-            background-color: #222;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            margin: 0 auto;
         }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* Buttons Styling at the Bottom */
         nav {
             position: fixed;
             bottom: 0;
             width: 100%;
-            background-color: #fff; /* White button background */
+            background-color: #fff;
             padding: 10px 0;
+            text-align: center;
         }
         nav button {
             background-color: #fff;
-            color: black; /* Black text on buttons */
-            border: 2px solid #000; /* Black border */
+            color: black;
+            border: 2px solid #000;
             padding: 10px 20px;
             margin: 5px;
             cursor: pointer;
@@ -57,72 +62,46 @@
         nav button:hover {
             background-color: #ddd;
         }
-        footer {
-            margin-top: 20px;
-            color: #888;
-        }
     </style>
 </head>
 <body>
 
-<header>
+<div class="content">
     <h1>SEEDCARD</h1>
-</header>
+    <p>
+        SEEDCARD is a physical Bitcoin key card designed to make gifting or transacting Bitcoin as easy as handing over cash, without requiring any technical knowledge.
+    </p>
 
-<section>
-    <img src="placeholder-image.jpg" alt="Placeholder Image">
-    <div class="content">
-        <h2>Introduction</h2>
-        <p>SEEDCARD  introduction
+    <h2>How the SEEDCARD Works</h2>
+    <p>
+        SEEDCARD is based on the creation of two related pieces of information, called partial keys.
+    </p>
+    <p>
+        These partial keys are generated using SEEDCARD Generator ECC open source software running on two Raspberry Pi SeedSigner devices, and engraved on two stainless steel plates using the Seed Hammer engraving machine.
+    </p>
 
-SEEDCARD is a physical Bitcoin key card designed to make gifting or transacting Bitcoin as easy as handing over cash, without requiring any technical knowledge.
+    <ul>
+        <li><strong>Plate #1 - Proof of Work:</strong> The first steel plate, called the POW Plate, is engraved with the first partial key and is kept by the Card Issuer. Both plates are needed to recreate the full private key and recover the Bitcoin.</li>
+        <li><strong>Plate #2 - Seed Card:</strong> The second steel plate, called the CIRC Plate, is engraved with the second partial key and can be used as digital cash. It has a Bitcoin public address and an NFC tag for verification and security.</li>
+    </ul>
 
+    <p>
+        To spend the Bitcoin on the SEEDCARD, both the POW Plate (held by the issuer) and the Seed Card (held by the user) are required. The partial keys from the plates are combined via the Generator ECC software to create a full private key that grants access to the stored Bitcoin.
+    </p>
 
-How the SEEDCARD Works
+    <h2>How to Use the SEEDCARD</h2>
+    <p>
+        The SEEDCARD holder scans the QR code engraved on the back of the card to verify that it's genuine, check the Bitcoin balance, or top-up the balance. However, to spend the Bitcoin, the card must be returned to the Card Issuer.
+    </p>
 
-SEEDCARD is based on the creation of two related pieces of information, called partial keys.
-
-These partial keys are generated using SEEDCARD Generator ECC open source software running on two Raspberry Pi SeedSigner devices, and engraved on two stainless steel plates using the Seed Hammer engraving machine. 
-
-Each plate serves a specific purpose: 
-
-Plate #1 - Proof of Work: The first steel plate, called the POW Plate, is engraved with the first partial key and is kept by the Card Issuer. The Proof of Work plate is crucial because both plates are needed to recreate the full private key and recover the Bitcoin.
-
-Plate #2 Seed Card: The second steel plate, called the CIRC Plate, is engraved with the second partial key and can be used as digital cash. The card is put  into circulation and used to hodl and transfer value. A full bitcoin public address is engraved on rear of plate to allow funds to be received. It has an embedded NFC tag for security and verification of the card. 
-
-During the SEEDCARD production process the two SeedSigner devices run Generator ECC software designed to allow the production of the two types of plate to occur in two different geographical locations.
-
-To spend the Bitcoin held on the SEEDCARD, requires both the Proof of Work plate (held by the issuer) and the Seed Card plate (held by the user).
-
-When the two partial private keys engraved on the plates are combined by entering them into the Generator ECC software, a full private key is generated which allows access to the Bitcoin stored on the SEEDCARD. 
-
-The full private key is never created or stored until the two partial keys are combined.
-
-
-
-
-
-How to Use the SEEDCARD
-
-The SEEDCARD holder scans the qr code engraved on the back to verify that the card is genuine and check or top-up the Bitcoin balance. 
-
-The holder cannot spend or remove the bitcoin from the SeedCard without returning the card to the Card Issuer.
-
-
-
-SEEDCARD Security Features
-
-Steel Plates: All important information is engraved on durable steel plates, making them resistant to fire, water, and physical damage.
-
-NFC Verification: The built-in NFC tag makes it easy to scan the card when needed, without needing to reveal the engraved key or download an app. The tag UID (unique identification) is used in the verification webpage and engraved on both plates. The UID is encoded during the manufacturing process and cannot be deleted or changed, making it impossible to clone.
-
-Offline and Secure: All key generation is done offline, ensuring that there is no risk of online hacking or exposure. The Generation software is open source and runs on the SeedSigner that has no built-in connectivity.
-
-No Technical Skills Needed: The whole process is simplified. With SEEDCARD, you don’t need to understand Bitcoin’s technical details to use it effectively. Just tap to verify the Bitcoin balance and make your first off-chain transaction….as straightforward as using physical cash.
-
-</p>
-    </div>
-</section>
+    <h2>SEEDCARD Security Features</h2>
+    <ul>
+        <li><strong>Steel Plates:</strong> All important information is engraved on durable steel plates, making them resistant to fire, water, and physical damage.</li>
+        <li><strong>NFC Verification:</strong> The built-in NFC tag makes it easy to verify the card without needing to reveal the engraved key. The UID tag is encoded during production and cannot be cloned or changed.</li>
+        <li><strong>Offline and Secure:</strong> All key generation occurs offline using open-source software, ensuring no risk of online hacking or exposure.</li>
+        <li><strong>No Technical Skills Needed:</strong> With SEEDCARD, users don’t need to understand Bitcoin’s technical details. Just scan, verify the balance, and make off-chain transactions as easily as using physical cash.</li>
+    </ul>
+</div>
 
 <nav>
     <button onclick="location.href='index.html'">Introduction</button>
@@ -131,10 +110,6 @@ No Technical Skills Needed: The whole process is simplified. With SEEDCARD, you 
     <button onclick="location.href='code-brief.html'">Code Brief</button>
     <button onclick="location.href='annex.html'">Annex</button>
 </nav>
-
-<footer>
-    <p>&copy; 2024 SEEDCARD All rights reserved.</p>
-</footer>
 
 </body>
 </html>
