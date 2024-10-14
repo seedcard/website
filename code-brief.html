@@ -36,7 +36,7 @@
             padding-bottom: 60px; /* Extra padding at the bottom */
         }
         .link {
-            color: #ffcc00; /* Gold color for links */
+            color: red; /* Red color for links */
             text-decoration: none;
         }
         .link:hover {
@@ -48,12 +48,29 @@
             height: auto; /* Responsive image */
             margin: 0 auto 20px; /* Centering and spacing */
         }
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-button {
+            background-color: #ffcc00; /* Gold button color */
+            color: #000; /* Black text for buttons */
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+        }
+        .nav-button:hover {
+            background-color: #e6b800; /* Darker gold on hover */
+        }
     </style>
 </head>
 <body>
 
 <div class="content">
-    <img src="https://i.ibb.co/W3znNqd/SEEDCARD-OG-BIP39.png" alt="SEEDCARD Logo" border="0"> <!-- Replace with your image URL -->
+    <img src="your-image-url.jpg" alt="SeedSigner Image"> <!-- Replace with your image URL -->
 
     <h1>Code Brief</h1>
 
@@ -129,6 +146,15 @@
         <li><a class="link" href="https://bitcointalk.org/index.php?topic=5328959.0" target="_blank">Forum discussion on split keys / partial keys (see code for split key generation)</a></li>
         <li><a class="link" href="https://bitcointalk.org/index.php?topic=114074.0" target="_blank">Forum discussion on split keys / partial keys</a></li>
     </ul>
+
+    <div class="nav-buttons">
+        <button onclick="location.href='index.html'">Introduction</button>
+        <button onclick="location.href='technology.html'">Technology</button>
+        <button onclick="location.href='software.html'">Software</button>
+        <button onclick="location.href='code-brief.html'">Code Brief</button>
+        <button onclick="location.href='annex.html'">Annex</button>
+    </div>
+
 </div>
 
 </body>
