@@ -35,22 +35,21 @@
             margin: 0 auto;
             padding-bottom: 60px; /* Extra padding at the bottom */
         }
-        .image-container {
-            text-align: center;
-            margin-bottom: 20px; /* Space below the image */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto; /* Responsive image */
+            margin: 0 auto 20px; /* Centering and spacing */
         }
-        .image-container img {
-            max-width: 100%; /* Make sure the image fits within the page */
-            height: auto;
+        .link {
+            color: red; /* Red color for links */
+            text-decoration: none;
         }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
+        .link:hover {
+            text-decoration: underline;
         }
-        li {
-            margin-bottom: 10px;
-        }
-        /* Buttons Styling at the Bottom */
+
+        /* Navigation bar styling */
         nav {
             position: fixed;
             bottom: 0;
@@ -59,84 +58,104 @@
             padding: 20px 0; /* Added extra padding */
             text-align: center;
         }
+
         nav button {
-            background-color: #000;
-            color: black;
+            background-color: #000; /* Black background */
+            color: white; /* White text */
             border: 2px solid #ffcc00; /* Gold border */
             padding: 10px 20px;
             margin: 5px;
             cursor: pointer;
             font-size: 16px;
-            color: white;
         }
+
         nav button:hover {
             background-color: #333; /* Darker background on hover */
-        }
-        /* Dark green for bold text */
-        .bold-green {
-            color: #006400; /* Dark green */
-        }
-        /* Red links */
-        .link {
-            color: red;
-            text-decoration: none;
-        }
-        .link:hover {
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
 
 <div class="content">
-    <!-- Image at the top center -->
-    <div class="image-container">
-        <img src="https://i.ibb.co/W3znNqd/SEEDCARD-OG-BIP39.png" alt="SEEDCARD Logo" border="0">
-    </div>
+    <img src="https://i.ibb.co/W3znNqd/SEEDCARD-OG-BIP39.png" alt="SEEDCARD Logo" border="0"> <!-- Replace with your image URL -->
 
     <h1>Code Brief</h1>
 
     <p>Code software in Python that can run on a SeedSigner - Raspberry Pi Zero 1.3 with Waveshare LCD screen.</p>
 
     <h2>Key Principles:</h2>
-    <p>To ensure that the full private key is never generated on any single device and only the Bitcoin wallet public key address is created, the code needs to handle <span class="bold-green">partial private keys</span> only on two separate devices. Here's a breakdown to ensure this:</p>
-
+    <p>To ensure that the full private key is never generated on any single device and only the Bitcoin wallet public key address is created, the code needs to handle partial private keys only on two separate devices. Here's a breakdown to ensure this:</p>
+    
     <ul>
-        <li>Each device only generates and handles its own <span class="bold-green">128-bit partial private key</span>.</li>
+        <li>Each device only generates and handles its own 128-bit partial private key.</li>
         <li>Each device should output its partial private key as a QR code and share it with the other device.</li>
         <li>The full private key is never combined or reconstructed on a single device. Only the public address (derived from the combined public key) is computed.</li>
         <li>Either device can combine the public keys (not the private keys) to generate the final public key and Bitcoin address.</li>
         <li>The same software will be run on two devices.</li>
     </ul>
-
+    
     <h2>To Ensure This:</h2>
-    <p>Device A and Device B only generate half of the private key (128 bits) each and output this partial private key as a QR code. Each device generates its own partial key, but not the other device’s partial key.</p>
+    <p>Device A and Device B only generate half of the private key (128 bits) each and output this partial private key as a QR code. Each device generates its own partial key, but not the other device's partial key.</p>
     <p>The combination happens using the public keys derived from the partial private keys, never by combining the private keys directly. This ensures the full private key is never constructed.</p>
+    <p>After sharing QR codes between devices either device can scan the QR code, retrieve the other device’s public key (generated from the partial private key), and combine the two public keys using elliptic curve operations to derive the final public key.</p>
+    <p>The final public key, used to derive the Bitcoin address, is computed via modular addition of the two public keys (not the private keys). This is a safe operation because:</p>
+    
+    <ul>
+        <li>The public keys don’t reveal the private keys.</li>
+        <li>The private keys remain separate.</li>
+    </ul>
 
     <h2>Workflow:</h2>
     <p>This program will handle the following tasks:</p>
 
     <ul>
-        <li><span class="bold-green">Partial Key Generation</span>: Each device will generate half of a 256-bit private key (128-bit each), convert it to BIP-39 mnemonic seed words, and output it as a QR code.</li>
-        <li><span class="bold-green">QR Code Scanning</span>: Each device can scan the other device's partial key via the camera or shared via a secure connection.</li>
-        <li><span class="bold-green">Public Key Combination</span>: After scanning the QR code of the partial private key from the other device, the program will combine the two public keys using elliptic curve point addition (modular addition).</li>
-        <li><span class="bold-green">Bitcoin Address Generation</span>: The final combined public key will be used to generate a Bitcoin address.</li>
-        <li><span class="bold-green">QR Code Output</span>: The Bitcoin address is output as a QR code.</li>
+        <li><strong>Partial Key Generation:</strong> Each device will generate half of a 256-bit private key (128-bit each), convert it to BIP-39 mnemonic seed words, and output it as a QR code.</li>
+        <li><strong>QR Code Scanning:</strong> Each device can scan the other device's partial key via the camera or shared via a secure connection.</li>
+        <li><strong>Public Key Combination:</strong> After scanning the QR code of the partial private key from the other device, the program will combine the two public keys using elliptic curve point addition (modular addition).</li>
+        <li><strong>Bitcoin Address Generation:</strong> The final combined public key will be used to generate a Bitcoin address.</li>
+        <li><strong>QR Code Output:</strong> The Bitcoin address is output as a QR code.</li>
     </ul>
 
     <h2>Program Workflow</h2>
     <p>When the Generator ECC program is run, you are prompted to choose between three modes:</p>
+    
+    <h3>Option 1: Generate Partial Key and QR Code</h3>
+    <ul>
+        <li><strong>Partial Key Generation:</strong> The first device generates a 128-bit partial private key using a random number generator.</li>
+        <li><strong>Seed Words Generation:</strong> This 128-bit private key is converted into a 12-word BIP-39 mnemonic seed phrase. These seed phrase words are converted to a SeedQR.</li>
+        <li><strong>Public Key Generation:</strong> The partial private key is used to generate a partial public key via elliptic curve multiplication on the secp256k1 curve.</li>
+        <li><strong>QR Code Output:</strong> The partial public key is converted into a QR code and displayed on the device screen for the user to scan. This QR code can be shared with the second device for later combination.</li>
+    </ul>
+    <p><em>Note: The partial private key is not stored - only outputs are the SeedQR code (displayed on screen) and the partial public key QR code (displayed on the screen).</em></p>
 
-    <!-- Additional sections, content as provided -->
+    <h3>Option 2: Scan and Combine Keys to Generate Bitcoin Address</h3>
+    <ul>
+        <li><strong>QR Code Scanning:</strong> The second device uses the built-in camera to scan a QR code from another device. This QR code contains the partial public key generated by the first device.</li>
+        <li><strong>Partial Key Generation:</strong> The second device generates a 128-bit partial private key using a random number generator.</li>
+        <li><strong>Seed Words Generation:</strong> This 128-bit private key is converted into a 12-word BIP-39 mnemonic seed phrase. These seed phrase words are converted to a SeedQR.</li>
+        <li><strong>Public Key Generation:</strong> The partial private key is used to generate a partial public key via elliptic curve multiplication on the secp256k1 curve.</li>
+        <li><strong>Public Key Combination:</strong> The scanned partial public key (from step 1) and the locally generated partial public key are combined using elliptic curve point addition (modular addition on the secp256k1 curve).</li>
+        <li><strong>Bitcoin Address Creation:</strong> The combined public key is hashed (SHA-256 followed by RIPEMD-160) to create a Bitcoin address.</li>
+        <li><strong>QR Code Output:</strong> The resulting Bitcoin address is displayed and saved as a QR code, which can be used to receive funds from other Bitcoin wallets.</li>
+    </ul>
+
+    <h3>Option 3: Enter Two Sets of Seed Phrases to Generate Combined Private Key</h3>
+    <ul>
+        <li><strong>Manual Seed Phrase Input:</strong> The user is prompted to scan two SeedQR codes, each representing a 128-bit partial private key.</li>
+        <li><strong>Private Key Reconstruction:</strong> Each SeedQR is converted back into its corresponding 128-bit private key.</li>
+        <li><strong>Private Key Combination:</strong> The two 128-bit private keys are combined using modular addition (on the secp256k1 curve) to generate the full 256-bit private key.</li>
+        <li><strong>SeedQR Code Output:</strong> The combined private key is converted back into a BIP-39 mnemonic seed phrase. This combined seed phrase is output as a SeedQR code and displayed on the screen. This can be scanned with a SeedSigner.</li>
+    </ul>
+    <p><em>Note: This option is only used to confirm that the software is functioning correctly and to provide spend functionality.</em></p>
 
     <h2>Links:</h2>
     <ul>
         <li><a class="link" href="https://bitcointalk.org/index.php?topic=5328959.0" target="_blank">Forum discussion on split keys / partial keys (see code for split key generation)</a></li>
         <li><a class="link" href="https://bitcointalk.org/index.php?topic=114074.0" target="_blank">Forum discussion on split keys / partial keys</a></li>
     </ul>
-
 </div>
 
+<!-- Navigation Bar -->
 <nav>
     <button onclick="location.href='index.html'">Introduction</button>
     <button onclick="location.href='technology.html'">Technology</button>
