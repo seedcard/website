@@ -97,7 +97,7 @@
     <h2>To Ensure This:</h2>
     <p>Device A and Device B only generate half of the private key (128 bits) each and output this partial private key as a QR code. Each device generates its own partial key, but not the other device's partial key.</p>
     <p>The combination happens using the public keys derived from the partial private keys, never by combining the private keys directly. This ensures the full private key is never constructed.</p>
-    <p>After sharing QR codes between devices either device can scan the QR code, retrieve the other device’s public key (generated from the partial private key), and combine the two public keys using elliptic curve operations to derive the final public key.</p>
+    <p>After sharing QR codes between devices either device can scan the QR code, retrieve the other device’s public key (generated from the partial private key), and combine the two public keys using elliptic curve calculation to derive the final public key.</p>
     <p>The final public key, used to derive the Bitcoin address, is computed via modular addition of the two public keys (not the private keys). This is a safe operation because:</p>
     
     <ul>
@@ -141,7 +141,7 @@
 
     <h3>Option 3: Enter Two Sets of Seed Phrases to Generate Combined Private Key</h3>
     <ul>
-        <li><strong>Manual Seed Phrase Input:</strong> The user is prompted to scan two SeedQR codes, each representing a 128-bit partial private key.</li>
+        <li><strong>Seed Phrase Input:</strong> The user is prompted to scan two SeedQR codes, each representing a 128-bit partial private key.</li>
         <li><strong>Private Key Reconstruction:</strong> Each SeedQR is converted back into its corresponding 128-bit private key.</li>
         <li><strong>Private Key Combination:</strong> The two 128-bit private keys are combined using modular addition (on the secp256k1 curve) to generate the full 256-bit private key.</li>
         <li><strong>SeedQR Code Output:</strong> The combined private key is converted back into a BIP-39 mnemonic seed phrase. This combined seed phrase is output as a SeedQR code and displayed on the screen. This can be scanned with a SeedSigner.</li>
