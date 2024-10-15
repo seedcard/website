@@ -1,4 +1,4 @@
-# SEEDCARD Project
+# SEEDCARD
 
 ## Introduction
 The [SEEDCARD](https://seedcard.github.io/website/index.html) project is designed to provide an innovative solution for ...
