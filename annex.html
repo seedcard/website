@@ -41,14 +41,21 @@
             height: auto; /* Responsive image */
             margin: 0 auto 20px; /* Centering and spacing */
         }
+
+        /* Fixed Navigation Bar */
         .nav-buttons {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000; /* Same background as page */
             text-align: center;
-            margin-top: 20px;
+            padding: 10px 0;
         }
+
         .nav-button {
             background-color: #ffcc00; /* Gold button color */
             color: #000; /* Black text for buttons */
-            border: none;
+            border: 2px solid #ffcc00; /* Gold border on buttons */
             padding: 10px 20px;
             margin: 5px;
             font-size: 16px;
@@ -84,14 +91,15 @@
 
     <p>While cash has these distinct features, the rise of digital payment methods, credit cards, and cryptocurrencies has increased the use of other forms of money, but cash remains a fundamental medium of exchange.</p>
 
-    <div class="nav-buttons">
-        <button onclick="location.href='index.html'">Introduction</button>
-        <button onclick="location.href='technology.html'">Technology</button>
-        <button onclick="location.href='software.html'">Software</button>
-        <button onclick="location.href='code-brief.html'">Code Brief</button>
-        <button onclick="location.href='annex.html'">Annex</button>
-    </div>
+</div>
 
+<!-- Fixed Navigation Bar -->
+<div class="nav-buttons">
+    <button class="nav-button" onclick="location.href='index.html'">Introduction</button>
+    <button class="nav-button" onclick="location.href='technology.html'">Technology</button>
+    <button class="nav-button" onclick="location.href='software.html'">Software</button>
+    <button class="nav-button" onclick="location.href='code-brief.html'">Code Brief</button>
+    <button class="nav-button" onclick="location.href='annex.html'">Annex</button>
 </div>
 
 </body>
